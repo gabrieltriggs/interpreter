@@ -3,6 +3,7 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+-- Contains partial tests and program strings.
 
 module Tests where
 

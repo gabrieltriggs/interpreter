@@ -3,6 +3,7 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+-- Contains code relevant to the parsing phase.
 
 module Parser where
 
@@ -19,15 +20,15 @@ variable _			   = Nothing
 
 literal :: String -> Parser String
 literal w (Symbol x : s) = if w == x then Just (x, s) else Nothing
-literal w (Ident x : s) = if w == x then Just (x, s) else Nothing
-literal _ _ = Nothing
+literal w (Ident x : s)  = if w == x then Just (x, s) else Nothing
+literal _ _ 		     = Nothing
 
 expr :: Parser Expr
 expr = (aexp <&> optional (literal ">" <&> aexp)) `modify` optGreater
 		where
 			optGreater :: (Expr,[(a,Expr)]) -> Expr
 			optGreater (e1, []) 		= e1
-			optGreater (e1, [(gt, e2)]) = Greater e1 e2
+			optGreater (e1, [(_, e2)])  = Greater e1 e2
 			optGreater _ 				= error "impossible"
 
 aexp :: Parser Expr
@@ -52,7 +53,7 @@ cexp = (literal "(" <&> (expr <&> literal ")")) `modify` unparenth
 	   <|> (variable `modify` (\x -> (Var x)))
 	   	where 
 			unparenth :: (a,(b,c)) -> b
-			unparenth (op, (e, cp)) = e
+			unparenth (_, (e, _d)) = e
 
 command :: Parser Command
 command = (unitcom <&> optional (literal ";" <&> command)) `modify` optSeq
@@ -61,9 +62,9 @@ command = (unitcom <&> optional (literal ";" <&> command)) `modify` optSeq
 				unitcom = whilecom <|> (ifcom <|> assign)
 
 				optSeq :: (Command,[(a,Command)]) -> Command
-				optSeq (c1, []) 			 = c1
-				optSeq (c1, [(semicol, c2)]) = Seq c1 c2
-				optSeq _ 					 = error "impossible"
+				optSeq (c1, []) 	   = c1
+				optSeq (c1, [(_, c2)]) = Seq c1 c2
+				optSeq _ 			   = error "impossible"
 
 whilecom :: Parser Command
 whilecom = (literal "WHILE" <&> (expr <&> (literal "DO" 

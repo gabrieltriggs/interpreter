@@ -3,6 +3,7 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+-- Contains type definitions for use throughout the interpreter.
 
 module Types where
 

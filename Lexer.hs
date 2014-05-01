@@ -3,6 +3,7 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+-- Contains code relevant to the lexing phase.
 
 module Lexer where
 

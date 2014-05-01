@@ -3,6 +3,7 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+-- Conatains run function and tests of complete program.
 
 import Lexer
 import Parser
@@ -34,21 +35,20 @@ testWhole = do
 				putStr "Actual:   "
 				putStr ("X = " ++ (show (run program2 initial "X")))
 				putStrLn (", Y = " ++ (show (run program2 initial "Y")))
-				putStrLn "\nInterpreter Test 3"
+				putStrLn "\nComplete Test 3"
 				putStrLn "Expected: X = 2, Y = 1, Z = 5"
 				putStr "Actual:   "
-				putStr ("X = " ++ ((show . interpreter3) "X"))
-				putStr (", Y = " ++ ((show . interpreter3) "Y"))
-				putStrLn (", Z = " ++ ((show . interpreter3) "Z"))
-				putStrLn "\nInterpreter Test 4"
+				putStr ("X = " ++ (show (run program3 initial "X")))
+				putStr (", Y = " ++ (show (run program3 initial "Y")))
+				putStrLn (", Z = " ++ (show (run program3 initial "Z")))
+				putStrLn "\nComplete Test 4"
 				putStrLn "Expected: X = 1, Y = -2"
 				putStr "Actual:   "
-				putStr ("X = " ++ ((show . interpreter4) "X"))
-				putStrLn (", Y = " ++ ((show . interpreter4) "Y"))
-				putStrLn "\nInterpreter Test 5"
+				putStr ("X = " ++ (show (run program4 initial "X")))
+				putStrLn (", Y = " ++ (show (run program4 initial "Y")))
+				putStrLn "\nComplete Test 5"
 				putStrLn "Expected: X = 0, Y = 0, Z = 100"
 				putStr "Actual:   "
-				putStr ("X = " ++ ((show . interpreter5) "X"))
-				putStr (", Y = " ++ ((show . interpreter5) "Y"))
-				putStrLn (", Z = " ++ ((show . interpreter5) "Z"))
-				putStrLn "\n"
+				putStr ("X = " ++ (show (run program5 initial "X")))
+				putStr (", Y = " ++ (show (run program5 initial "Y")))
+				putStrLn (", Z = " ++ (show (run program5 initial "Z")))
