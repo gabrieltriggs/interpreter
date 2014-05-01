@@ -3,13 +3,14 @@
 -- Triggs, Gabriel
 -- CS 3515
 -- 2014-5-1
+module Interpreter where
 
 import Combinators
 import Types
+
 import Data.Char
 
-main :: IO ()
-main = print (foo "X")
+
 
 fetch :: Store -> Variable -> Val
 fetch s x = s x
