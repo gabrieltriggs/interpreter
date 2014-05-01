@@ -1,3 +1,9 @@
+-- Tests.hs
+--
+-- Triggs, Gabriel
+-- CS 3515
+-- 2014-5-1
+
 module Tests where
 
 import Interpreter
@@ -182,54 +188,67 @@ testLexer = do
 				putStrLn "\n"
 
 lexer1 :: [Token]
-lexer1 = lexer "X := 2;\
-			   \Y := 0;\
-			   \Z := 2;\
-			   \WHILE X > Y DO\
-			   \    Z := Z * Z;\
-			   \    X := X - 1\
-			   \END"
+lexer1 = lexer program1
 
 lexer2 :: [Token]
-lexer2 = lexer "X := 1;\
-			   \Y := 2;\
-			   \IF X > Y\ 
-			   \	THEN Z := X\
-			   \	ELSE X := Y\
-			   \ENDIF"
+lexer2 = lexer program2
 
 lexer3 :: [Token]
-lexer3 = lexer "X := 2;\
-			   \Y := 1;\
-			   \Z := 3;\
-			   \IF X > Y\
-			   \	THEN IF Y > Z\
-			   \			 THEN Z := 4\
-			   \			 ELSE Z := 5\
-			   \		 ENDIF\
-			   \    ELSE Z := 6\
-			   \ENDIF"
+lexer3 = lexer program3
 
 lexer4 :: [Token]
-lexer4 = lexer "X := 1;\
-			   \Y := (0 - X) * 2"
+lexer4 = lexer program4
 
 lexer5 :: [Token]
-lexer5 = lexer "X := 10;\
-			   \WHILE X > 0 DO\
-			   \	Y := 10;\
-			   \	WHILE Y > 0 DO\
-			   \		Z := Z - (0 - 1);\
-			   \ 		Y := Y - 1\
-			   \	END;\
-			   \	X := X - 1\
-			   \END"
+lexer5 = lexer program5
 
 lexer6 :: [Token]
-lexer6 = lexer "WHILE X > Y DO X := X - 1; Z := Z * Z END"
+lexer6 = lexer program6
 
--- Tests of entire program
-testWhole :: IO ()
-testWhole = do
-				putStrLn "FOO"
+-- Program strings
+program1 :: String
+program1 = "X := 2;        \
+		   \Y := 0; 	   \
+		   \Z := 2;        \
+		   \WHILE X > Y DO \
+	       \    Z := Z * Z;\
+		   \    X := X - 1 \
+		   \END"
 
+program2 :: String
+program2 = "X := 1;			\
+		   \Y := 2;		    \
+		   \IF X > Y		\ 
+		   \	THEN Z := X \
+		   \	ELSE X := Y \
+		   \ENDIF"
+
+program3 :: String
+program3 = "X := 2;					 \
+		   \Y := 1;					 \
+		   \Z := 3;					 \
+		   \IF X > Y				 \
+		   \	THEN IF Y > Z		 \
+		   \			 THEN Z := 4 \
+		   \			 ELSE Z := 5 \
+		   \		 ENDIF			 \
+		   \    ELSE Z := 6			 \
+		   \ENDIF"
+
+program4 :: String
+program4 = "X := 1; 		\
+		   \Y := (0 - X) * 2"
+
+program5 :: String
+program5 = "X := 10;				  \
+		   \WHILE X > 0 DO 			  \
+		   \	Y := 10;			  \
+		   \	WHILE Y > 0 DO 		  \
+		   \		Z := Z - (0 - 1); \
+		   \ 		Y := Y - 1 		  \
+		   \	END;				  \
+		   \	X := X - 1 			  \
+		   \END"
+
+program6 :: String
+program6 = "WHILE X > Y DO X := X - 1; Z := Z * Z END"
