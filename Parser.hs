@@ -53,7 +53,6 @@ cexp = (literal "(" <&> (expr <&> literal ")")) `modify` unparenth
 	   	where 
 			unparenth :: (a,(b,c)) -> b
 			unparenth (op, (e, cp)) = e
-			-- unparenth _ 			= error "impossible"
 
 command :: Parser Command
 command = (unitcom <&> optional (literal ";" <&> command)) `modify` optSeq

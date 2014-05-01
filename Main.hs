@@ -7,10 +7,15 @@
 import Lexer
 import Parser
 import Interpreter
+import Tests
 import Types
 
 main :: IO ()
-main = print (foo "X")
+main = do
+		testInterpreter
+		testParser
+		testLexer
+		testWhole
 
 run :: String -> Store -> Store
 run = interpret . mainParser . lexer

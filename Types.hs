@@ -15,11 +15,13 @@ data Expr     = Const Val
               | Minus Expr Expr
               | Times Expr Expr
               | Greater Expr Expr
-              
+                     deriving Show
+                     
 data Command  = Assign Variable Expr
               | Seq Command Command
               | Cond Expr Command Command
               | While Expr Command
+                     deriving Show
 
 type Store    = Variable -> Val
 
