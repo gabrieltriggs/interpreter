@@ -8,9 +8,6 @@ module Interpreter where
 
 import Types
 
-import Data.Char
-
-
 fetch :: Store -> Variable -> Val
 fetch s x = s x
 

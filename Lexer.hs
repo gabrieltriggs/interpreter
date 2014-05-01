@@ -6,8 +6,8 @@
 
 module Lexer where
 
-import Types
 import Data.Char
+import Types
 
 keyword :: String -> Bool
 keyword "IF"    = True
