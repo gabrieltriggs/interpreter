@@ -1,3 +1,5 @@
+-- Combinator.hs
+--
 -- This file contains some standard parser combinators.
 -- Patricia Johann
 -- 18 February 2014
